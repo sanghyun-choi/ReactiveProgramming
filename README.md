@@ -19,3 +19,6 @@ HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용
 - jar를 실행 시 NettyWebServer start()가 실행되어 EmbededServer 운용 가능
 
 
+4. ViewTemplate(themeleaf)
+- themeleaf를 이용시 stream형태로 rendering이 가능
+- Freemarker, Mustache는 

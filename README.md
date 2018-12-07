@@ -15,7 +15,7 @@ TemplateEngine(Freemarker, themeleaf) 사용시 View요청을 받는 경우 @Ann
 HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용하는 방법을 원했으나, 현재 방법으로는 찾기 힘듬
 (RequestParameter자체를 Mono타입으로 받기때문에 Repository까지 Reacive를 지원하는 ReactiveMongoRepository를 이용해야 쉽게 가능) 
 
-* @Annotation과 Function기반을 혼용해서 개발
+* @Annotation은 Controller, FunctionHandler는 Service로 이용해서 개발
 
 
 

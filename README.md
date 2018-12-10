@@ -24,4 +24,3 @@ HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용
 - Freemarker, Mustache는 stream형태의 datasource 제공 x
 - template엔진을 이용할 경우 thymeleaf가 좋아보임
 
-5. 

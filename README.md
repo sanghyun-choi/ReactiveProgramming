@@ -2,8 +2,8 @@
 
 1. Mono와 Flux 이해(RxJAVA 책 추천)
 - Mono, Flux : ReactiveStream스펙으로 개발된 Reactor라이브러리 구현체 Publisher, Subscriber
-- Mono : Element 1개를 받으며, 한번의 Subscribe이벤트만 사용 가능
-- Flux : Element N개를 받으며, 여러번의 Subscribe이벤트 사용 가능
+- Mono : Element 1개를 받으며, 여러 Subscribe이벤트 사용 가능
+- Flux : Element N개를 받으며, 여러 Subscribe이벤트 사용 가능
 
 
 

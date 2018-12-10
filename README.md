@@ -14,6 +14,7 @@ HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용
 (RequestParameter자체를 Mono타입으로 받기때문에 Repository까지 Reacive를 지원하는 ReactiveMongoRepository를 이용해야 쉽게 가능)
 * ServerRequest.bodyToMono는 handler 내부 로직에서 사용되어서 subscribe이용 불가능, Blocking되는 이슈로 지원불가, return에서 사용해야 함
 (https://stackoverflow.com/questions/48867886/spring-webflux-netty-handler-cant-parse-serverrequest-containing-json-larger)
+* Handler방식을 이용하여 View 리턴 방식을 제공할 경우 ServerResponse.render를 통해 제공 가능, 이점은 모르겠음.
 
 3. Netty서버 기반으로 war(Servlet기반)가 아닌 jar로 배포 가능
 - jar를 실행 시 NettyWebServer start()가 실행되어 EmbededServer 운용 가능
@@ -24,3 +25,4 @@ HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용
 - Freemarker, Mustache는 stream형태의 datasource 제공 x
 - template엔진을 이용할 경우 thymeleaf가 좋아보임
 
+5. 

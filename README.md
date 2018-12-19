@@ -28,3 +28,4 @@ HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용
 
 5. TestCode작성
 - @WebFluxTest 어노테이션을 활용하여 WebTestClient를 통해 Request 테스트 쉽게 가능
+- Reactor 코드를 테스트 하고 싶다면 StepVerfier를 이용하여 테스트 코드를 작성(io.projectreactor / reactor-test dependency 추가)

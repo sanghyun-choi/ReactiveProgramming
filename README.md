@@ -29,3 +29,11 @@ HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용
 5. TestCode작성
 - @WebFluxTest 어노테이션을 활용하여 WebTestClient를 통해 Request 테스트 쉽게 가능
 - Reactor 코드를 테스트 하고 싶다면 StepVerfier를 이용하여 테스트 코드를 작성(io.projectreactor / reactor-test dependency 추가)
+
+6. subScribeOn과 publishOn 차이
+- subScribeOn : subscribe로 구독을 시작할 때 실행될 Thread를 지정할 수 있다. 2번 사용불가, 처음 시작하는게 고정
+- publishOn : 선언 후 이후에 실행되는 연산자는 publishOn에서 지정한 Thread에서 실행되게 할 수 있다. 다중 사용 가능
+
+7. Cold와 Hot 개념
+- Cold : 일반적으로 subscribe하면 선언된 모든 Mono, Flux 연산자를 통해 데이터를 처음부터 발행한다.
+- Hot : subscribe를 하지 않아도 publisher로 부터 데이터 발행이 진행된다. 따라서 계속 데이터가 발행될 수 있다. Mono나 Flux의 publish()연산자를 통해 ConnectableFlux를 얻어 autoConnect, share등의 연산자를 이용하여 데이터를 발행한다.

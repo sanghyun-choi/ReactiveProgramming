@@ -42,3 +42,4 @@ HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용
 - GET : request.pathVariable, request.queryParam 활용하여 값을 가져옴
 - POST : request.bodyToMono를 활용하여 값을 가져옴(raw타입, 즉 json)
 - POST - application/x-www-form-urlencoded : BodyExtractors.toFormData를 활용하여 값을 가져와야 함
+(MultiValueMap형태이기때문에 (key,List) 구조의 Map으로 저장됨)

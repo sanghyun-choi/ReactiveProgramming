@@ -37,3 +37,8 @@ HandlerFunction을 통해 View와 requestParameter, Model을 원활하게 이용
 7. Cold와 Hot 개념
 - Cold : 일반적으로 subscribe하면 선언된 모든 Mono, Flux 연산자를 통해 데이터를 처음부터 발행한다.
 - Hot : subscribe를 하지 않아도 publisher로 부터 데이터 발행이 진행된다. 따라서 계속 데이터가 발행될 수 있다. Mono나 Flux의 publish()연산자를 통해 ConnectableFlux를 얻어 autoConnect, share등의 연산자를 이용하여 데이터를 발행한다.
+
+8. ServerRequest 활용
+- GET : request.pathVariable 활용하여 값을 가져옴
+- POST : request.bodyToMono를 활용하여 값을 가져옴(raw타입, 즉 json)
+- POST - application/x-www-form-urlencoded : BodyExtractors.toFormData를 활용하여 값을 가져와야 함

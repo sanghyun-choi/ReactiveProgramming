@@ -64,9 +64,9 @@ HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 paramet
 
 9. security + jwt 기반 인증 활용
 - 기존 spring-security는 ThreadLocal방식을 활용하여 같은 thread or 자식 thread에게만 security principal 데이터 제공
-- webflux는 threadlocal 이용 불가(thread에 제한적이지 않음)
-- authManager, userDetails, userDetailService, springSecurityFilterChain 등 기술 사용 스펙은 비슷
-- jwt를 활용하여 인증 구현
+- webflux는 ThreadLocal 이용 불가(thread에 제한적이지 않음), 이러한 이유로 ServerWebExchange에 속성으로 저장하며 내부적으로 Reactor Context활용)
+- authManager, userDetails, userDetailService, springSecurityFilterChain등 기술 사용 스펙은 비슷
+- jwt를 활용하여 인증 구현(Header에 데이터 저장, 쿠키도 이용 가능할 듯함)
 
 
 

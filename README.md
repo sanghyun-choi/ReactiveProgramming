@@ -70,8 +70,11 @@ HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 paramet
 - jwt를 활용하여 인증 구현(Header에 데이터 저장, 쿠키도 이용 가능할 듯함)
 
 
-
-
+10. 병렬 처리 이용
+- Reactor의 어떠한 연산자도 병렬 실행을 자신 스스로 진행하지 않는다.
+- 병렬을 지원하는 연산자는 해당 연산자 실행 시 자신에게 지정된 방식의 스레드 풀을 이용할 뿐이다.
+- 병렬을 이용하기 위해서는 보통 Mono.zip에 파라미터로 적용되는 Mono들에게 subscribeOn을 적용하여 병렬로 실행하게 한다.
+- 이때, 병렬로 진행되면서 최종적으로 BiFunction을 통해 merge하여 적용된다. 이때 merge되는 스레드는 가장 마지막에 실행된 스레드가 적용
 
 
 

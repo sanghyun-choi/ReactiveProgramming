@@ -14,8 +14,9 @@
 - 결과 : 
 TemplateEngine(Freemarker, thymeleaf)사용시 View요청을 받는 경우 기존 @Annotation방식을 이용하여 쉽게 적용
 HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 parameterType으로 가져올 수 있음
-* ServerRequest.bodyToMono는 handler 내부 로직에서 사용되어서 subscribe이용 불가능, Blocking되는 이슈로 지원불가, handler return에서 사용해야 함
-또한, ServerRequest.bodyToMono는 subscribe가 2번이상 불가하기 때문에 Mono.zip이용할 경우 param을 여러군데서 사용시 사용 불가, subscribe가 2번 이상 일어날 수 있기 때문.
+* ServerRequest.bodyToMono는 리액티브 프로그래밍에서 subscribe가 한번만 가능하다. 따라서 handler내부 로직에서 별도로 사용은 불가능하며 그 이유는 Blocking되는 이슈로 지원불가하다고 함, handler return에서 필수적으로 사용해야 함
+또한, ServerRequest.bodyToMono는 subscribe가 2번이상 불가하기 때문에 리턴 로직에서 Mono.zip을 이용할 경우 bodyToMono로 여러군데서 사용시 사용 불가, subscribe가 2번 이상 일어날 수 있기 때문이다. 따라서 bodyToMono 생성 후 새로운 Mono타입으로 생성하여 이용해야 한다.
+
 (https://stackoverflow.com/questions/48867886/spring-webflux-netty-handler-cant-parse-serverrequest-containing-json-larger)
 * Handler방식을 이용하여 View 리턴 방식을 제공할 경우 ServerResponse.render를 통해 제공 가능, 이 때 데이터는 map형태로 제공
 

@@ -69,7 +69,7 @@ HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 paramet
 - authManager, userDetails, userDetailService, springSecurityFilterChain등 기술 사용 스펙은 비슷
 - jwt를 활용하여 인증 구현(Header에 데이터 저장, 쿠키도 이용 가능할 듯함)
 
-<
+<br/>
 
 10. 병렬 처리 이용
 - Reactor의 어떠한 연산자도 병렬 실행을 자신 스스로 진행하지 않는다.

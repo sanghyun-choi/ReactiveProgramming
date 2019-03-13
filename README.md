@@ -1,6 +1,6 @@
 # SpringBoot2 + WebFlux
 
-1. Mono와 Flux 이해(RxJAVA 책 추천)
+# Mono와 Flux 이해(RxJAVA 책 추천)
 - Spring5에서는 request Flow를 Mono형태로 처리한다. 즉 methodParameter도 Mono타입, response도 Mono타입
 - Mono, Flux : ReactiveStream스펙으로 개발된 Reactor라이브러리 구현체로 Publisher, Subscriber를 쉽게 개발 가능
 - Mono : Element 1개를 받으며, 여러 Subscribe이벤트 사용 가능
@@ -8,7 +8,7 @@
 
 <br/>
 
-2. @Annotation기반과 Router&Handler Function기반의 WebFlux
+# @Annotation기반과 Router&Handler Function기반의 WebFlux
 - @Annotation : View리턴(Model을 쉽게 넘기고 싶은 경우), @Annotation이용(기존 프로그래밍 방식에 유리)
 - Router&Handler : ServerResponse응답을 직접 전달하고 싶은 경우 RouterFunction기반의 기술 이용(선언형 프로그래밍,함수형)
 - 결과 : 
@@ -22,7 +22,7 @@ HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 paramet
 
 <br/>
 
-3. Netty서버 기반으로 war(Servlet기반)가 아닌 jar로 배포 가능
+# Netty서버 기반으로 war(Servlet기반)가 아닌 jar로 배포 가능
 - jar를 실행 시 NettyWebServer start()가 실행되어 EmbededServer 운용 가능
 - Servlet을 이용하지 않고 웹 http서버 운용이 쉽게 가능
 - 스레드 개수를 제한하여 많은 양의 request 처리 가능(EventLoop 형태)
@@ -30,14 +30,14 @@ HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 paramet
 
 <br/>
 
-4. ViewTemplate(thymeleaf)
+# ViewTemplate(thymeleaf)
 - thymeleaf를 이용시 stream형태로 rendering이 가능(response시 stream형태로 계속 출력, 대용량일 경우 메모리 이슈를 제거할 수 있음)
 - Freemarker, Mustache는 stream형태의 datasource 제공 x
 - template엔진을 이용할 경우 thymeleaf가 좋아보임
 
 <br/>
 
-5. TestCode작성
+# TestCode작성
 - @WebFluxTest 어노테이션을 활용하여 WebTestClient를 통해 Request 테스트 쉽게 가능
 - Reactor 코드를 테스트 하고 싶다면 StepVerfier를 이용하여 테스트 코드를 작성(io.projectreactor / reactor-test dependency 추가)
 
@@ -49,13 +49,13 @@ HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 paramet
 
 <br/>
 
-7. Cold와 Hot 개념
+# Cold와 Hot 개념
 - Cold : 일반적으로 subscribe하면 선언된 모든 Mono, Flux 연산자를 통해 데이터를 처음부터 발행한다.
 - Hot : subscribe를 하지 않아도 publisher로 부터 데이터 발행이 진행된다. 따라서 계속 데이터가 발행될 수 있다. Mono나 Flux의 publish()연산자를 통해 ConnectableFlux를 얻어 autoConnect, share등의 연산자를 이용하여 데이터를 발행한다.
 
 <br/>
 
-8. ServerRequest 활용
+# ServerRequest 활용
 - GET : request.pathVariable, request.queryParam, request.queryParams(.toSingleMap이용) 활용하여 값을 가져옴
 - POST : request.bodyToMono를 활용하여 값을 가져옴(raw타입, 즉 json)
 - POST - application/x-www-form-urlencoded : BodyExtractors.toFormData를 활용하여 값을 가져와야 함
@@ -63,7 +63,7 @@ HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 paramet
 
 <br/>
 
-9. security + jwt 기반 인증 활용
+# security + jwt 기반 인증 활용
 - 기존 spring-security는 ThreadLocal방식을 활용하여 같은 thread or 자식 thread에게만 security principal 데이터 제공
 - webflux는 ThreadLocal 이용 불가(thread에 제한적이지 않음), 이러한 이유로 ServerWebExchange에 속성으로 저장하며 내부적으로 Reactor Context활용)
 - authManager, userDetails, userDetailService, springSecurityFilterChain등 기술 사용 스펙은 비슷
@@ -71,7 +71,7 @@ HandlerFunction을 통해 requestParameter자체를 Mono타입 or 일반 paramet
 
 <br/>
 
-10. 병렬 처리 이용
+# 병렬 처리 이용
 - Reactor의 어떠한 연산자도 병렬 실행을 자신 스스로 진행하지 않는다.
 - 병렬을 지원하는 연산자는 해당 연산자 실행 시 자신에게 지정된 방식의 스레드 풀을 이용할 뿐이다.
 - 병렬을 이용하기 위해서는 보통 Mono.zip에 파라미터로 적용되는 Mono들에게 subscribeOn을 적용하여 병렬로 실행하게 한다.
